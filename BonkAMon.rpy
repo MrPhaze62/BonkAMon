@@ -3,7 +3,7 @@ init -990 python in mas_submod_utils:
         author="Phazeee",
         name="BonkAMon",
         description="Heh. Bonk your Monika!",
-        version="0.0.1"
+        version="0.0.2"
     )
 
 #====bonk count - submod inspired by Extra+ and OpenWorld heheheheheh.
@@ -61,6 +61,9 @@ init 5 python:
 init 10000:
     screen mas_extramenu_area():
         zorder 52
+        key "e" action Jump("mas_extra_menu_close")
+        key "E" action Jump("mas_extra_menu_close")
+
         frame:
             area(0, 0, 1280, 720)
             background Solid("#0000007F")
@@ -101,13 +104,14 @@ screen bonk_menu():
     zorder 50
     style_prefix "hkb"
     hbox:
-        grid 1 1:
+        grid 2 1:
             spacing 20
             xpos 527
             ypos 534
             textbutton ("Bonk Monika!"): 
                 xysize(120, None) 
                 action Jump("bonk_a_mon") hover_sound gui.hover_sound
+            textbutton ("Return") action Jump("mas_extra_menu_close") hover_sound gui.hover_sound
     vbox: 
         xpos 1166
         ypos 0
