@@ -3,7 +3,7 @@ init -990 python in mas_submod_utils:
         author="Phazeee",
         name="BonkAMon",
         description="Heh. Bonk your Monika!",
-        version="0.0.2"
+        version="0.0.3"
     )
 
 #====bonk count - submod inspired by Extra+ and OpenWorld heheheheheh.
@@ -52,13 +52,11 @@ init 5 python:
     )
 
 
-
-
 init 5 python:
     def bonk_submenu():
         renpy.call_screen("bonk_menu")
 
-init 10000:
+init 10001:
     screen mas_extramenu_area():
         zorder 52
         key "e" action Jump("mas_extra_menu_close")
@@ -91,14 +89,35 @@ init 10000:
                     style "mas_adjust_vbar"
                     xalign 0.5
                 $ store.mas_sprites.adjust_zoom()
-        frame:
-            area (308, 639, 202, 65)
-            style "mas_extra_menu_frame"
-            textbutton ("Bonk Monika"):
-                xalign 0.5
-                yalign 0.5
-                action [Hide("mas_extramenu_area"), Jump("view_bonkmenu")] hover_sound gui.hover_sound
-
+        if store.mas_submod_utils.isSubmodInstalled("Open World"):
+                frame:
+                    area (310, 639, 202, 65)
+                    style "mas_extra_menu_frame"
+                    if persistent._mas_in_idle_mode == True:
+                        textbutton ("Open World"):
+                            xalign 0.5
+                            yalign 0.5
+                            action NullAction()
+                    else:
+                        textbutton ("Open World"):
+                            xalign 0.5
+                            yalign 0.5
+                            action [Hide("mas_extramenu_area"), Jump("view_OW")] hover_sound gui.hover_sound
+                frame:        
+                    area (520, 639, 202, 65)
+                    style "mas_extra_menu_frame"
+                    textbutton ("Bonk Monika"):
+                        xalign 0.5
+                        yalign 0.5
+                        action [Hide("mas_extramenu_area"), Jump("view_bonkmenu")] hover_sound gui.hover_sound           
+        else:
+            frame:
+                area (308, 639, 202, 65)
+                style "mas_extra_menu_frame"
+                textbutton ("Bonk Monika"):
+                    xalign 0.5
+                    yalign 0.5
+                    action [Hide("mas_extramenu_area"), Jump("view_bonkmenu")] hover_sound gui.hover_sound
 
 screen bonk_menu():
     zorder 50
@@ -155,7 +174,7 @@ label BonkMain:
             ypos 90
 
             #textbutton ("Close") style "hkb_button" action [Hide("extra_gen_list"), Jump("close_boop_screen")]
-            textbutton ("Return") style "hkb_button" action [Hide("extra_gen_list"), Jump("ch30_loop")]
+            textbutton ("Return") style "hkb_button" action [Hide("extra_gen_list"), Jump("zoomfixreturn")]
         #add "submods/BonkAMon/images/bat2.png" xpos 100 ypos 100
         #transform:
         #   zoom 0.1
@@ -184,6 +203,17 @@ label BonkTime:
         m 5tsa "... You must be enjoying this huh?"
     elif persistant.bonk_count[1] == 3:
         m 2dfbsa "Ow! I hope you're prepared for twice the pain once I cross over [player]!"
+    elif persistant.bonk_count[1] == 4:
+        m 6lfp "AH! [player], I'll get my revenge on you."
+        m 3nfu "You'd better watch out!"
+    elif persistant.bonk_count[1] == 5:
+        m 4wfp "Ow! How can one squeaky hammer do so much damage??"
+        m 2gsp "This shouldn't even be possible..."
+    elif persistant.bonk_count[1] == 6:
+        m 6rtbsu "..."
+        m 2ltbfp "..."
+        m 3tubfa "Oh... just wondering if I should buy a larger bat..."
+        m 5hubfb "Just Kidding!"
     else:
         $ moldable_variable = renpy.random.randint(1,5)
         if moldable_variable == 1:
@@ -215,3 +245,13 @@ label DevBaka:
 jump ch30_loop
 return
 
+
+
+label zoomfixreturn:
+    $ mas_temp_zoom_level = store.mas_sprites.zoom_level
+call monika_zoom_transition_reset(1.0)
+
+call monika_zoom_transition(mas_temp_zoom_level,1.0)
+jump ch30_loop
+
+return
