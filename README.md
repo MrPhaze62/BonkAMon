@@ -12,3 +12,6 @@ The latest version should now be compatible with Yun's OpenWorld Submod and Extr
 Just Extract and drag and drop the folder into submod folder so it should look like this
 
 game -> Submods -> BonkAYun
+
+![1](https://github.com/MrPhaze62/BonkAMon/assets/65294370/c18d0201-742d-42c7-8171-94cb54ca2209)
+![2](https://github.com/MrPhaze62/BonkAMon/assets/65294370/3f29a1e3-b2ee-4102-aefe-6087436e50d0)
