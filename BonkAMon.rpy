@@ -1,12 +1,3 @@
-#init -990 python in mas_submod_utils:
- #   Submod(
-  #      author="Phazeee",
-   #     name="BonkAMon",
-    #    description="Heh. Bonk your Monika!",
-     #   version="0.0.4"
-    #)
-
-
 #=========auto submod update
 
 # Register the submod
@@ -15,7 +6,7 @@ init -990 python:
         author="Phazeee",
         name="BonkAMon",
         description="Heh. Bonk your Monika!",
-        version="0.0.4",
+        version="0.0.5",
     )
 
 # Register the updater
@@ -27,8 +18,9 @@ init -989 python:
             repository_name="BonkAMon",
         )
 
-#==== Hey there, if you're translating. feel free to remove my auto updater above or replace it with your github page. else you'll or the players from this update on will get hit with English Texts!
 
+#==== Hey there, if you're translating. feel free to remove my auto updater above or replace it with your github page above the lines!.
+#==== else you or the players from this update on will get hit with English Texts, and that'll be very confusing for everyone. oops! ;-;
 
 
 #====bonk count - submod inspired by Extra+ and OpenWorld heheheheheh.
@@ -211,11 +203,12 @@ return
 
 label bonk_a_mon:
 
-m "..."
-m 6eksdlb "Is... That a squeaky bat, [player]?"
-m 4rtsdld "Ahaha.... What are you going to do with that?"
-#$ mas_HKBDropShield()
-jump show_bonk_screen
+    m "..."
+    m 6eksdlb "Is... That a squeaky bat, [player]?"
+    m 4rtsdld "Ahaha.... What are you going to do with that?"
+    #$ mas_HKBDropShield()
+    jump show_bonk_screen
+
 return
 
 label BonkTime:
@@ -238,27 +231,62 @@ label BonkTime:
         m 6rtbsu "..."
         m 2ltbfp "..."
         m 3tubfa "Oh... Just wondering if I should buy a larger bat..."
-        m 5hubfb "Just Kidding!"
+        m 5hubfb "Just kidding!"
     elif persistant.bonk_count[1] == 7:
         m 4wub "Just Monika!"
-        m 2hksdla "Ahaha... No idea why I said that out loud..."
-        m 5kssdlb "But I'm special enough for your love~!"
+        m 2hksdla "Ahaha~ No idea why I said that out loud..."
+        m 5eubfa "But I'm special enough for your love~!"
     else:
-        $ moldable_variable = renpy.random.randint(1,5)
+        $ moldable_variable = renpy.random.randint(1,9)
         if moldable_variable == 1:
             m 7lfblt "Ow! Keep this up and I'll keep your files hostage..."
             m 6tkblu "Just kidding [player]! I'll never do something like that."
         elif moldable_variable == 2:
             m 2kksdla "*bonk* *bonk* *bonk*"
-            m 7ksb "What a child you are [player]... but I love that about you!"
+            m 7ksb "What a child you are, [player]... But I love that about you!"
         elif moldable_variable == 3:
-            m 6tut "Are you secretly... sadistic [player]?"
+            m 6tut "Are you secretly... Sadistic, [player]?"
             m 5eua "Just kidding!"
         elif moldable_variable == 4:
             m 1tkbfb "OW! ... I guess someone really wants to get hit on, huh?"
             m 7tkbfu "I just hope you don't regret it, [player]"
         elif moldable_variable == 5:
             m 6wfb "Hey!"
+        elif moldable_variable == 6:
+            m 2tua "It must feel nice for you to hit me in the head huh?"
+        elif moldable_variable == 7:
+            m 3eua "Is wacking me on the head is your way of showing affection to me, [player]?"
+            $ _history_list.pop()
+            menu:
+                m "Is wacking me on the head is your way of showing affection to me, [player]?{fast}"
+                "Yes":
+                    m 4eub "If so, I welcome it!"
+                    m 5efu "Just don't be so surpised if I end up doing the same to you~!"
+                "No":
+                    m 6wfo "..."
+                    m 4wfo "So mean, [player], I guess I should do the same to you out of pure annoyance!"
+                    m 4wuu "..."
+                    m 5tsu "Ahaha~! As if I would get hurt over something little as this."
+                    m 7tsu "It just means that you care about me enough to do it!"
+                    m 1tsb "How affectionate you are, [player]! Ahahah~"
+        elif moldable_variable == 8:
+            show screen tear(20, 0.1, 0.1, 0, 40)
+            pause 1
+            play sound "sfx/s_kill_glitch1.ogg"
+            pause 0.2
+            stop sound
+            hide screen tear
+            m 6wusdld "OW! I think you nearly broke the game, [player]!"
+            m 4rusdlc "That squeaky hammer seriously has too much power..."
+            m 2gsp "It shouldn't even be possible..."
+            m 2eksdlc "Maybe you should be more careful of wacking me, [player]"
+            m 1eua "But I'm okay if you're wondering!"
+            m 3eub "Who knows, Maybe that squaky hammer could break down the walls for me to cross over to your reality [player]!"
+            m 3rksdra "Ahah~ What am I talking about? As if that hammer could..."
+            #m ""
+        elif moldable_variable == 9:
+            m 7cua "I'm so gonna snatch that bat away from you, [player]!"
+            m 5kub "Just kidding!"
     jump show_bonk_screen
 return
 
@@ -269,18 +297,17 @@ label MainGaem:
 
 label DevBaka:
 
-"Huh... Bonk a yun... I feel that's a reference somewhere..."
+    "Huh... Bonk a yun... I feel that's a reference somewhere..."
 
-jump ch30_loop
+    jump ch30_loop
 return
 
 
 
 label zoomfixreturn:
     $ mas_temp_zoom_level = store.mas_sprites.zoom_level
-call monika_zoom_transition_reset(1.0)
+    call monika_zoom_transition_reset(1.0)
 
-call monika_zoom_transition(mas_temp_zoom_level,1.0)
-jump ch30_loop
-
+    call monika_zoom_transition(mas_temp_zoom_level,1.0)
+    jump ch30_loop
 return
