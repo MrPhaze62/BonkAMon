@@ -209,7 +209,7 @@ return
 label bonk_a_mon:
 
 m "..."
-m 6eksdlb "Is... that a squeaky bat, [player]?"
+m 6eksdlb "Is... That a squeaky bat, [player]?"
 m 4rtsdld "Ahaha.... What are you going to do with that?"
 #$ mas_HKBDropShield()
 jump show_bonk_screen
@@ -234,8 +234,12 @@ label BonkTime:
     elif persistant.bonk_count[1] == 6:
         m 6rtbsu "..."
         m 2ltbfp "..."
-        m 3tubfa "Oh... just wondering if I should buy a larger bat..."
+        m 3tubfa "Oh... Just wondering if I should buy a larger bat..."
         m 5hubfb "Just Kidding!"
+    elif persistant.bonk_count[1] == 7:
+        m 4wub "Just Monika!"
+        m 2hksdla "Ahaha... No idea why I said that out loud..."
+        m 5kssdlb "But I'm special enough for your love~!"
     else:
         $ moldable_variable = renpy.random.randint(1,5)
         if moldable_variable == 1:
