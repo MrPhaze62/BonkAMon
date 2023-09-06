@@ -19,6 +19,6 @@ You'll find the option in the Extra's button, (the one with the zoom. incase you
 
 If you happen to like my submod, consider trying out these two submods linked below:
 
-https://github.com/Yun-Seo1/Open-World - Yun's OpenWorld Submod
+https://github.com/Yun-Seo1/Open-World - Yun's OpenWorld Submod, (psst If you like OpenWorld, go join the OpenWorld Discord server linked in that github page! I'm there too along with MAS discord server!)
 
 https://github.com/zer0fixer/MAS-Extraplus - Zer0Fixer's Extra+ Submod.
