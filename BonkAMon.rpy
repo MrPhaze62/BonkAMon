@@ -1,10 +1,32 @@
-init -990 python in mas_submod_utils:
-    Submod(
+#init -990 python in mas_submod_utils:
+ #   Submod(
+  #      author="Phazeee",
+   #     name="BonkAMon",
+    #    description="Heh. Bonk your Monika!",
+     #   version="0.0.4"
+    #)
+
+
+#=========auto submod update
+
+# Register the submod
+init -990 python:
+    store.mas_submod_utils.Submod(
         author="Phazeee",
         name="BonkAMon",
         description="Heh. Bonk your Monika!",
-        version="0.0.3"
+        version="0.0.4",
     )
+
+# Register the updater
+init -989 python:
+    if store.mas_submod_utils.isSubmodInstalled("Submod Updater Plugin"):
+        store.sup_utils.SubmodUpdater(
+            submod="BonkAMon",
+            user_name="MrPhaze62",
+            repository_name="BonkAMon",
+        )
+
 
 #====bonk count - submod inspired by Extra+ and OpenWorld heheheheheh.
 
