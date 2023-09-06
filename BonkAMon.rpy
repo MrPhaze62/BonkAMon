@@ -27,6 +27,9 @@ init -989 python:
             repository_name="BonkAMon",
         )
 
+#==== Hey there, if you're translating. feel free to remove my auto updater above or replace it with your github page. else you'll or the players from this update on will get hit with English Texts!
+
+
 
 #====bonk count - submod inspired by Extra+ and OpenWorld heheheheheh.
 
