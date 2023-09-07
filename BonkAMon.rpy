@@ -6,7 +6,7 @@ init -990 python:
         author="Phazeee",
         name="BonkAMon",
         description="Heh. Bonk your Monika!",
-        version="0.0.6",
+        version="0.0.7",
     )
 
 # Register the updater
@@ -16,6 +16,7 @@ init -989 python:
             submod="BonkAMon",
             user_name="MrPhaze62",
             repository_name="BonkAMon",
+            extraction_depth=1
         )
 
 
@@ -240,7 +241,7 @@ label BonkTime:
         m 2hksdla "Ahaha~ No idea why I said that out loud..."
         m 5eubfa "But I'm special enough for your love~!"
     elif persistant.bonk_count[1] == 8:
-        m ""
+        m 6hub "Awee~ Stop!"
     else:
         $ moldable_variable = renpy.random.randint(1,9)
         if moldable_variable == 1:
@@ -288,7 +289,6 @@ label BonkTime:
             m 1eua "But I'm okay if you're wondering!"
             m 3eub "Who knows, Maybe that squaky hammer could break down the walls for me to cross over to your reality [player]!"
             m 3rksdra "Ahah~ What am I talking about? As if that hammer could..."
-            #m ""
         elif moldable_variable == 9:
             m 7cua "I'm so gonna snatch that bat away from you, [player]!"
             m 5kub "Just kidding!"
