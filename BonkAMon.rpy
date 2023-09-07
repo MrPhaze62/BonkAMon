@@ -6,7 +6,7 @@ init -990 python:
         author="Phazeee",
         name="BonkAMon",
         description="Heh. Bonk your Monika!",
-        version="0.0.5",
+        version="0.0.6",
     )
 
 # Register the updater
@@ -33,8 +33,11 @@ image zonetwo = im.Scale("mod_assets/other/transparent.png", 180, 120)
 
 #idle mode from ExtraPlus
 
-
 image monika staticpose = monika_extraplus
+
+
+#Chibika_bonkies. heheheh - who knows, maybe i'll add a natsuki bonk. heheh. this is not for natsu natsu niiii~
+#not this update though. tis a secret.
 
 
 init 5 python:
@@ -82,10 +85,10 @@ init 10001:
         frame:
             area(0, 0, 1280, 720)
             background Solid("#0000007F")
-        textbutton _("Close"):
-                area (60, 596, 120, 35)
-                style "hkb_button"
-                action Jump("mas_extra_menu_close")
+            textbutton _("Close"):
+                    area (60, 596, 120, 35)
+                    style "hkb_button"
+                    action Jump("mas_extra_menu_close")
                 # zoom control
         frame:
             area (195, 450, 80, 255)
@@ -236,6 +239,8 @@ label BonkTime:
         m 4wub "Just Monika!"
         m 2hksdla "Ahaha~ No idea why I said that out loud..."
         m 5eubfa "But I'm special enough for your love~!"
+    elif persistant.bonk_count[1] == 8:
+        m ""
     else:
         $ moldable_variable = renpy.random.randint(1,9)
         if moldable_variable == 1:
