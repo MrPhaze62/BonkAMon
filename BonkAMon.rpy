@@ -6,7 +6,7 @@ init -990 python:
         author="Phazeee",
         name="BonkAMon",
         description="Heh. Bonk your Monika!",
-        version="0.0.7",
+        version="0.0.8",
     )
 
 # Register the updater
@@ -35,7 +35,6 @@ image zonetwo = im.Scale("mod_assets/other/transparent.png", 180, 120)
 #idle mode from ExtraPlus
 
 image monika staticpose = monika_extraplus
-
 
 #Chibika_bonkies. heheheh - who knows, maybe i'll add a natsuki bonk. heheh. this is not for natsu natsu niiii~
 #not this update though. tis a secret.
@@ -127,18 +126,30 @@ init 10001:
                 frame:        
                     area (520, 639, 202, 65)
                     style "mas_extra_menu_frame"
-                    textbutton ("Bonk Monika"):
-                        xalign 0.5
-                        yalign 0.5
-                        action [Hide("mas_extramenu_area"), Jump("view_bonkmenu")] hover_sound gui.hover_sound           
+                    if persistent._mas_in_idle_mode == True:
+                        textbutton ("Bonk Monika"):
+                            xalign 0.5
+                            yalign 0.5
+                            action NullAction()
+                    else:
+                        textbutton ("Bonk Monika"):
+                            xalign 0.5
+                            yalign 0.5
+                            action [Hide("mas_extramenu_area"), Jump("view_bonkmenu")] hover_sound gui.hover_sound           
         else:
             frame:
                 area (308, 639, 202, 65)
                 style "mas_extra_menu_frame"
-                textbutton ("Bonk Monika"):
-                    xalign 0.5
-                    yalign 0.5
-                    action [Hide("mas_extramenu_area"), Jump("view_bonkmenu")] hover_sound gui.hover_sound
+                if persistent._mas_in_idle_mode == True:
+                    textbutton ("Bonk Monika"):
+                        xalign 0.5
+                        yalign 0.5
+                        action NullAction()
+                else:
+                    textbutton ("Bonk Monika"):
+                        xalign 0.5
+                        yalign 0.5
+                        action [Hide("mas_extramenu_area"), Jump("view_bonkmenu")] hover_sound gui.hover_sound
 
 screen bonk_menu():
     zorder 50
@@ -159,10 +170,10 @@ screen bonk_menu():
 
 
 label view_bonkmenu:
-python:
-    #mas_RaiseShield_dlg()
-    bonk_submenu()
-return
+    python:
+        mas_RaiseShield_dlg()
+        bonk_submenu()
+    return
 
 
 #labels land
@@ -202,7 +213,7 @@ label BonkMain:
         imagebutton idle "zonetwo":
             xpos 550 ypos 10
             action [Hide("submod_interactions"), Jump("BonkTime")]
-return
+    return
 
 
 label bonk_a_mon:
@@ -210,10 +221,9 @@ label bonk_a_mon:
     m "..."
     m 6eksdlb "Is... That a squeaky bat, [player]?"
     m 4rtsdld "Ahaha.... What are you going to do with that?"
-    #$ mas_HKBDropShield()
     jump show_bonk_screen
 
-return
+    return
 
 label BonkTime:
     $ persistant.bonk_count[1] += 1
@@ -293,7 +303,7 @@ label BonkTime:
             m 7cua "I'm so gonna snatch that bat away from you, [player]!"
             m 5kub "Just kidding!"
     jump show_bonk_screen
-return
+    return
 
 label MainGaem:
     show monika staticpose at t11
@@ -305,14 +315,14 @@ label DevBaka:
     "Huh... Bonk a yun... I feel that's a reference somewhere..."
 
     jump ch30_loop
-return
+    return
 
 
 
 label zoomfixreturn:
     $ mas_temp_zoom_level = store.mas_sprites.zoom_level
-    call monika_zoom_transition_reset(1.0)
-
+    #call monika_zoom_transition_reset(1.0)
+    $ mas_HKBDropShield()
     call monika_zoom_transition(mas_temp_zoom_level,1.0)
     jump ch30_loop
-return
+    return
