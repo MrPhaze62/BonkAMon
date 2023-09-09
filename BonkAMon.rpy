@@ -307,7 +307,7 @@ label BonkTime:
         elif moldable_variable == 10 and store.mas_submod_utils.isSubmodInstalled("Open World"):
             #if persistant.bonk_count[1] == 15:
             m 4wkb "Careful [player]! I don't want your ridiculous squeaky hammer to break my wonderful world you've restored!"
-            m 3hksdlu "I dread to find out what would happen if you missed my head, my world unstable as it is!"
+            m 3hksdlu "I dread to find out what would happen if you missed my head, my world is as unstable as it is!"
             m 3gsb "Who knows, maybe Yun would find a way to block how powerful that hammer is."
 
     jump show_bonk_screen
