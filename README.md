@@ -9,7 +9,7 @@ Yes, this submod has similarites to Extra+ because I used most of the codes from
 
 The latest version should now be compatible with Yun's OpenWorld Submod and Extra+, Enjoy!
 
-Find the Submod in the releases section: https://github.com/MrPhaze62/BonkAMon/releases
+Find the Submod in the releases section: https://github.com/mrphaze62/bonkamon/releases/latest
 
 Just Extract and drag and drop the folder into submod folder so it should look like this
 
