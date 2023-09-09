@@ -6,7 +6,7 @@ init -990 python:
         author="Phazeee",
         name="BonkAMon",
         description="Heh. Bonk your Monika!",
-        version="0.0.8",
+        version="0.0.9",
     )
 
 # Register the updater
@@ -171,6 +171,8 @@ screen bonk_menu():
 
 label view_bonkmenu:
     python:
+        store.player_zoom = store.mas_sprites.zoom_level
+        store.disable_zoom_button = False
         mas_RaiseShield_dlg()
         bonk_submenu()
     return
@@ -253,7 +255,7 @@ label BonkTime:
     elif persistant.bonk_count[1] == 8:
         m 6hub "Awee~ Stop!"
     else:
-        $ moldable_variable = renpy.random.randint(1,9)
+        $ moldable_variable = renpy.random.randint(1,10)
         if moldable_variable == 1:
             m 7lfblt "Ow! Keep this up and I'll keep your files hostage..."
             m 6tkblu "Just kidding [player]! I'll never do something like that."
@@ -302,6 +304,12 @@ label BonkTime:
         elif moldable_variable == 9:
             m 7cua "I'm so gonna snatch that bat away from you, [player]!"
             m 5kub "Just kidding!"
+        elif moldable_variable == 10 and store.mas_submod_utils.isSubmodInstalled("Open World"):
+            #if persistant.bonk_count[1] == 15:
+            m 4wkb "Careful [player]! I don't want your ridiculous squeaky hammer to break my wonderful world you've restored!"
+            m 3hksdlu "I dread to find out what would happen if you missed my head, my world unstable as it is!"
+            m 3gsb "Who knows, maybe Yun would find a way to block how powerful that hammer is."
+
     jump show_bonk_screen
     return
 
@@ -320,9 +328,9 @@ label DevBaka:
 
 
 label zoomfixreturn:
-    $ mas_temp_zoom_level = store.mas_sprites.zoom_level
-    #call monika_zoom_transition_reset(1.0)
-    $ mas_HKBDropShield()
-    call monika_zoom_transition(mas_temp_zoom_level,1.0)
+    python:
+        store.mas_sprites.zoom_level = store.player_zoom
+        store.mas_sprites.adjust_zoom()
+        mas_HKBDropShield()
     jump ch30_loop
     return
