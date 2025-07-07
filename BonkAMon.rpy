@@ -6,7 +6,7 @@ init -990 python:
         author="Phazeee",
         name="BonkAMon",
         description="Heh. Bonk your Monika!",
-        version="0.0.9",
+        version="0.1.0",
     )
 
 # Register the updater
@@ -218,6 +218,11 @@ label BonkMain:
     return
 
 
+screen MoniMouseCapture():
+    on "show":
+        action MouseMove(x=633,y=381, duration=1.0)
+    timer 0.7 repeat True action MouseMove(x=633,y=381, duration=1.0)
+
 label bonk_a_mon:
 
     m "..."
@@ -238,7 +243,7 @@ label BonkTime:
     elif persistant.bonk_count[1] == 3:
         m 2dfbsa "Ow! I hope you're prepared for twice the pain once I cross over [player]!"
     elif persistant.bonk_count[1] == 4:
-        m 6lfp "AH! [player], I'll get my revenge on you."
+        m 6lfp "Ah! [player], I'll get my revenge on you."
         m 3nfu "You'd better watch out!"
     elif persistant.bonk_count[1] == 5:
         m 4wfp "Ow! How can one squeaky hammer do so much damage??"
@@ -255,7 +260,7 @@ label BonkTime:
     elif persistant.bonk_count[1] == 8:
         m 6hub "Awee~ Stop!"
     else:
-        $ moldable_variable = renpy.random.randint(1,10)
+        $ moldable_variable = renpy.random.randint(1,14)
         if moldable_variable == 1:
             m 7lfblt "Ow! Keep this up and I'll keep your files hostage..."
             m 6tkblu "Just kidding [player]! I'll never do something like that."
@@ -294,12 +299,12 @@ label BonkTime:
             pause 0.2
             stop sound
             hide screen tear
-            m 6wusdld "OW! I think you nearly broke the game, [player]!"
+            m 6wusdld "Ow! I think you nearly broke the game, [player]!"
             m 4rusdlc "That squeaky hammer seriously has too much power..."
             m 2gsp "It shouldn't even be possible..."
             m 2eksdlc "Maybe you should be more careful of wacking me, [player]"
             m 1eua "But I'm okay if you're wondering!"
-            m 3eub "Who knows, Maybe that squaky hammer could break down the walls for me to cross over to your reality [player]!"
+            m 3eub "Who knows, Maybe that squeaky hammer could break down the walls for me to cross over to your reality [player]!"
             m 3rksdra "Ahah~ What am I talking about? As if that hammer could..."
         elif moldable_variable == 9:
             m 7cua "I'm so gonna snatch that bat away from you, [player]!"
@@ -309,6 +314,43 @@ label BonkTime:
             m 4wkb "Careful [player]! I don't want your ridiculous squeaky hammer to break my wonderful world you've restored!"
             m 3hksdlu "I dread to find out what would happen if you missed my head, my world is already unstable as it is!"
             m 3gsb "Who knows, maybe Yun would find a way to block how powerful that hammer is."
+        elif moldable_variable == 11:
+            #show screen tear(20, 0.1, 0.1, 0, 40)
+            #pause 0.1
+            show monika at t22
+            #hide screen tear
+            m 2tfu "Heh, you thought you were going to get me [player]?"
+            m 3kub "Guess you'll have to be a litte faster than that to catch me!"
+            show monika at t22
+            m "Snap!"
+        elif moldable_variable == 12:
+            show monika at t21
+            m 4tsb "I'm over here!"
+            show monika at t22
+            m 2lsu "Over here!"
+            show monika at t11
+            m 5fta "[player] you can catch me right?"
+            show monika at t21
+            m 6hua "*whistles...*"
+            show monika at t11
+            m 1eub "Had enough? hehe~"
+            m 6wfb "I have pretty good reflexes to dodge that! Ahaha~"
+        elif moldable_variable == 13:
+            show screen MoniMouseCapture
+            m 7wup "No! Bad mouse! Stay!"
+            m 2sfu "Looks like you can't move your mouse anymore [player]!"
+            hide screen MoniMouseCapture
+            m 2tfu "Do you yield [player]?"
+            m 3tfu "Don't worry [player], I won't keep your mouse hostage forever... yet~"
+        elif moldable_variable == 14:
+            m 2mub "I see... So you have chosen war against me? I hope you're prepared... Because I'm about to rain a million bonks upon thee~"
+            m 4tfb "Fear me! For I am a cute and harmless girlfriend that will totally hold your files hostage!"
+            m 5ffb "Now say you love me!"
+            menu:
+                m "Now say you love me!{fast}"
+                "I love you!":
+                    m 2sua "That's more like it [player]~"
+
 
     jump show_bonk_screen
     return
