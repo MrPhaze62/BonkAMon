@@ -6,7 +6,7 @@ init -990 python:
         author="Phazeee",
         name="BonkAMon",
         description="Heh. Bonk your Monika!",
-        version="0.1.0",
+        version="0.1.1",
     )
 
 # Register the updater
@@ -16,7 +16,7 @@ init -989 python:
             submod="BonkAMon",
             user_name="MrPhaze62",
             repository_name="BonkAMon",
-            extraction_depth=1
+            #extraction_depth=1
         )
 
 
@@ -317,23 +317,23 @@ label BonkTime:
         elif moldable_variable == 11:
             #show screen tear(20, 0.1, 0.1, 0, 40)
             #pause 0.1
-            show monika at t22
+            show monika 2tfu at t22
             #hide screen tear
-            m 2tfu "Heh, you thought you were going to get me [player]?"
+            m "Heh, you thought you were going to get me [player]?"
             m 3kub "Guess you'll have to be a litte faster than that to catch me!"
-            show monika at t22
+            show monika 3kub at t22
             m "Snap!"
         elif moldable_variable == 12:
-            show monika at t21
-            m 4tsb "I'm over here!"
-            show monika at t22
-            m 2lsu "Over here!"
-            show monika at t11
-            m 5fta "[player] you can catch me right?"
-            show monika at t21
-            m 6hua "*whistles...*"
-            show monika at t11
-            m 1eub "Had enough? hehe~"
+            show monika 4tsb at t21
+            m "I'm over here!"
+            show monika 2lsu at t22
+            m "Over here!"
+            show monika 5fta at t11
+            m "[player] you can catch me right?"
+            show monika 6hua at t21
+            m "*whistles...*"
+            show monika 1eub at t11
+            m "Had enough? hehe~"
             m 6wfb "I have pretty good reflexes to dodge that! Ahaha~"
         elif moldable_variable == 13:
             show screen MoniMouseCapture
