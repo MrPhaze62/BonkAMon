@@ -6,7 +6,7 @@ init -990 python:
         author="Phazeee",
         name="BonkAMon",
         description="Heh. Bonk your Monika!",
-        version="0.1.1",
+        version="0.1.2",
     )
 
 # Register the updater
@@ -260,7 +260,7 @@ label BonkTime:
     elif persistant.bonk_count[1] == 8:
         m 6hub "Awee~ Stop!"
     else:
-        $ moldable_variable = renpy.random.randint(1,14)
+        $ moldable_variable = renpy.random.randint(1,15)
         if moldable_variable == 1:
             m 7lfblt "Ow! Keep this up and I'll keep your files hostage..."
             m 6tkblu "Just kidding [player]! I'll never do something like that."
@@ -350,7 +350,35 @@ label BonkTime:
                 m "Now say you love me!{fast}"
                 "I love you!":
                     m 2sua "That's more like it [player]~"
-
+        elif moldable_variable == 15 and store.mas_submod_utils.isSubmodInstalled("Open World"):
+            if persistent.OW_has_seen_outside == True:
+                m 6wuo "You swing your squeaky bat, but you misjudge your grip!"
+                m 6wusdld "The bat flies out of the window!"
+                m 4gusdlb "Ah... Haha. [player], it looks like you missed..."
+                m 2husdla "I think you should go and get it."
+                window hide
+                stop music fadeout 4
+                show black zorder 100 with Dissolve(5.0, alpha=True)
+                $ enable_esc()
+                $ HKBHideButtons()
+                $ is_sitting = False
+                hide black
+                $ OW_play_song(persistent.OW_current_track, fadein = 1.0)
+                scene bg house
+                "You show up in a world you've restored, luckily the OP squeaky hammer of yours has not caused enough destruction!"
+                "You take a breather and walk around, to search for the hammer."
+                "{cps=2}...{/cps}"
+                "You've found it lying on the ground!"
+                "You turn to leave... Wait... Is that...?"
+                "It's probably nothing..."
+                window hide
+                stop music fadeout 4
+                show black zorder 100 with Dissolve(5.0, alpha=True)
+                $ is_sitting = True
+                hide black
+                $ HKBShowButtons()
+                jump zoomfixreturn
+            
 
     jump show_bonk_screen
     return
